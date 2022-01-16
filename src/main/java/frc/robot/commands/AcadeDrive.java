@@ -7,15 +7,16 @@ package frc.robot.commands;
 import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.DrivetrainSubsytem;
 
 public class AcadeDrive extends CommandBase {
 
-  private final Drivetrain m_drivetrain;
+  private final DrivetrainSubsytem m_drivetrain;
   private final DoubleSupplier m_foward;
   private final DoubleSupplier m_turn;
 
   /** Creates a new AcadeDrive. */
-  public AcadeDrive(DoubleSupplier foward, DoubleSupplier turn, Drivetrain drivetrain) {
+  public AcadeDrive(DoubleSupplier foward, DoubleSupplier turn, DrivetrainSubsytem drivetrain) {
     m_drivetrain = drivetrain;
     m_foward = foward;
     m_turn = turn; 

@@ -1,0 +1,58 @@
+{
+  "HALProvider": {
+    "Other Devices": {
+      "Talon FX[0]": {
+        "header": {
+          "open": true
+        }
+      },
+      "Talon FX[0]/Fwd Limit": {
+        "header": {
+          "open": true
+        }
+      },
+      "Talon FX[0]/Integrated Sensor": {
+        "header": {
+          "open": true
+        }
+      },
+      "Talon FX[6]": {
+        "header": {
+          "open": true
+        }
+      }
+    }
+  },
+  "NTProvider": {
+    "types": {
+      "/FMSInfo": "FMSInfo",
+      "/LiveWindow/DrivetrainSubsytem": "Subsystem",
+      "/LiveWindow/DrivetrainSubsytem/Drive": "DifferentialDrive",
+      "/LiveWindow/DrivetrainSubsytem/a diff drive": "DifferentialDrive",
+      "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
+      "/SmartDashboard/DrivetrainSubsytem": "Subsystem"
+    },
+    "windows": {
+      "/LiveWindow/DrivetrainSubsytem/Drive": {
+        "window": {
+          "visible": true
+        }
+      },
+      "/LiveWindow/DrivetrainSubsytem/a diff drive": {
+        "window": {
+          "visible": true
+        }
+      },
+      "/LiveWindow/Ungrouped/Scheduler": {
+        "window": {
+          "visible": true
+        }
+      },
+      "/SmartDashboard/DrivetrainSubsytem": {
+        "window": {
+          "visible": true
+        }
+      }
+    }
+  }
+}
