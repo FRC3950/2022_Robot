@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
@@ -23,10 +24,11 @@ public class DrivetrainSubsytem extends SubsystemBase {
   private final WPI_TalonFX m_backLeft = new WPI_TalonFX(Constants.k_backLeft);
   private final WPI_TalonFX m_backRight = new WPI_TalonFX(Constants.k_backRight);
 
-  private WPI_TalonFX dog;
-  private TalonFX ele;
-  private TalonSRX frank;
+  private final WPI_TalonFX test = new WPI_TalonFX(7);
+  private final AnalogGyro m_gyro = new AnalogGyro(1);
 
+
+  
 
 
   DifferentialDrive m_drive = new DifferentialDrive(m_frontLeft, m_frontRight);
@@ -38,9 +40,7 @@ public class DrivetrainSubsytem extends SubsystemBase {
     m_backRight.follow(m_frontRight);
     m_backLeft.follow(m_frontLeft);
 
-    dog = new WPI_TalonFX(6);
-    ele = new TalonFX(7);
-    frank = new TalonSRX(8);
+  
 
 
     // m_backLeft.setName()
@@ -49,6 +49,9 @@ public class DrivetrainSubsytem extends SubsystemBase {
     //LiveWindow
     addChild("a diff drive", m_drive);
     addChild("b right motor controller", m_backRight);
+    addChild("Motor", test);
+    addChild("gyro", m_gyro);
+    addChild("Motor on Drive -front right", m_frontRight);
     
     
     
@@ -66,9 +69,14 @@ public class DrivetrainSubsytem extends SubsystemBase {
 
   }
 
+  public void motorOn(){
+
+    test.set(0.77);
+  }
+
   public void log(){
     SmartDashboard.putNumber("Motor Output Front-Left: ", m_frontLeft.get());    
-    SmartDashboard.putNumber("Velocity Front-Left: ", m_frontLeft.getSelectedSensorVelocity());    
+    SmartDashboard.putNumber("Velocity Front-Left: ", m_frontLeft.getSelectedSensorVelocity());   
     
 
 

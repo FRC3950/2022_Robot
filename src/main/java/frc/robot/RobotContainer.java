@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -73,7 +74,11 @@ public class RobotContainer {
 xboxButton1.whenPressed(new ShooterMotorOnCommand( m_shooter ) ,true);
     SmartDashboard.putData("Xbox Button 1",new ShooterMotorOnCommand( m_shooter ) );
      */
-    
+
+     new JoystickButton(m_xbox, XboxController.Button.kA.value)
+     .whenPressed(new InstantCommand(m_drivetrain::motorOn, m_drivetrain));
+     SmartDashboard.putData("motor on", new InstantCommand(m_drivetrain::motorOn, m_drivetrain));
+   
   }
 
   /**

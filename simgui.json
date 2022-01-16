@@ -16,7 +16,22 @@
           "open": true
         }
       },
+      "Talon FX[15]": {
+        "header": {
+          "open": true
+        }
+      },
+      "Talon FX[15]/Integrated Sensor": {
+        "header": {
+          "open": true
+        }
+      },
       "Talon FX[6]": {
+        "header": {
+          "open": true
+        }
+      },
+      "Talon FX[7]": {
         "header": {
           "open": true
         }
@@ -29,8 +44,10 @@
       "/LiveWindow/DrivetrainSubsytem": "Subsystem",
       "/LiveWindow/DrivetrainSubsytem/Drive": "DifferentialDrive",
       "/LiveWindow/DrivetrainSubsytem/a diff drive": "DifferentialDrive",
+      "/LiveWindow/DrivetrainSubsytem/gyro": "Gyro",
       "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
-      "/SmartDashboard/DrivetrainSubsytem": "Subsystem"
+      "/SmartDashboard/DrivetrainSubsytem": "Subsystem",
+      "/SmartDashboard/motor on": "Command"
     },
     "windows": {
       "/LiveWindow/DrivetrainSubsytem/Drive": {
