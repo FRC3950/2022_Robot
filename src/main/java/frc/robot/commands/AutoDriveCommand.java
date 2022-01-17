@@ -4,37 +4,46 @@
 
 package frc.robot.commands;
 
-import java.util.function.DoubleSupplier;
-
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DrivetrainSubsytem;
 
-public class AcadeDrive extends CommandBase {
+public class AutoDriveCommand extends CommandBase {
+private DrivetrainSubsytem subsystem;
+private double speed, seconds;
 
-  private final DrivetrainSubsytem m_drivetrain;
-  private final DoubleSupplier m_foward;
-  private final DoubleSupplier m_turn;
-
-  /** Creates a new AcadeDrive. */
-  public AcadeDrive(DoubleSupplier foward, DoubleSupplier turn, DrivetrainSubsytem drivetrain) {
-    m_drivetrain = drivetrain;
-    m_foward = foward;
-    m_turn = turn; 
-
-    addRequirements(m_drivetrain);
+  /** Creates a new AutoDriveCommand. */
+  public AutoDriveCommand(DrivetrainSubsytem subsystem, double speed, double seconds) {
     // Use addRequirements() here to declare subsystem dependencies.
+    this.speed = speed;
+    this.subsystem = subsystem;
+    this.seconds = seconds;
+    addRequirements(subsystem);
+
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+
+    subsystem.resetTimer();
+    subsystem.drive(speed, 0);
+    
+
+
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
 
-    m_drivetrain.drive(m_foward.getAsDouble(), m_turn.getAsDouble());
-  }
+    // if(subsystem.getTimeDrive()< seconds){
+    //   subsystem.drive(speed, 0);
+    // }else{
+    //     subsystem.drive(0, 0);
+    // }
+
+
+    }
 
   // Called once the command ends or is interrupted.
   @Override
@@ -43,6 +52,12 @@ public class AcadeDrive extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if(subsystem.getTimeDrive()<seconds){
+      return false;
+    }else{
+      subsystem.drive(0, 0);
+      return true;
+    }
+    
   }
 }

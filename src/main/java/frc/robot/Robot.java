@@ -30,6 +30,9 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+
+
+    
   }
 
   /**
@@ -90,7 +93,6 @@ public class Robot extends TimedRobot {
     // Cancels all running commands at the start of test mode.
     //CommandScheduler.getInstance().cancelAll();
     CommandScheduler.getInstance().enable();
-    LiveWindow.setEnabled(true);
 
     teleopInit();
   }

@@ -16,12 +16,32 @@
           "open": true
         }
       },
+      "Talon FX[14]/Integrated Sensor": {
+        "header": {
+          "open": true
+        }
+      },
       "Talon FX[15]": {
         "header": {
           "open": true
         }
       },
       "Talon FX[15]/Integrated Sensor": {
+        "header": {
+          "open": true
+        }
+      },
+      "Talon FX[1]": {
+        "header": {
+          "open": true
+        }
+      },
+      "Talon FX[1]/Fwd Limit": {
+        "header": {
+          "open": true
+        }
+      },
+      "Talon FX[1]/Integrated Sensor": {
         "header": {
           "open": true
         }
@@ -47,6 +67,7 @@
       "/LiveWindow/DrivetrainSubsytem/gyro": "Gyro",
       "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
       "/SmartDashboard/DrivetrainSubsytem": "Subsystem",
+      "/SmartDashboard/Field": "Field2d",
       "/SmartDashboard/motor on": "Command"
     },
     "windows": {
@@ -60,12 +81,22 @@
           "visible": true
         }
       },
+      "/LiveWindow/DrivetrainSubsytem/gyro": {
+        "window": {
+          "visible": true
+        }
+      },
       "/LiveWindow/Ungrouped/Scheduler": {
         "window": {
           "visible": true
         }
       },
       "/SmartDashboard/DrivetrainSubsytem": {
+        "window": {
+          "visible": true
+        }
+      },
+      "/SmartDashboard/Field": {
         "window": {
           "visible": true
         }

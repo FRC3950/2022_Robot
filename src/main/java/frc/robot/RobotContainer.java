@@ -6,6 +6,7 @@ package frc.robot;
 
 
 import frc.robot.commands.*;
+import frc.robot.commands.commandGroups.AutoDance;
 import frc.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -31,7 +32,10 @@ public class RobotContainer {
 
 
   // Robot's Commands defined here if not bound to Joystick:
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_drivetrain);
+  // private final ExampleCommand m_autoCommand = new ExampleCommand(m_drivetrain);
+  // private final AutoDriveCommand m_autoCommand = new AutoDriveCommand(m_drivetrain, 0.7, 5);
+  private final AutoDance m_autoCommand = new AutoDance(m_drivetrain);
+
 
   //Robot's Controllers & Joysticks:
   private final XboxController m_xbox = new XboxController(0);
@@ -53,7 +57,7 @@ public class RobotContainer {
  
     //Default Commands:
     m_drivetrain.setDefaultCommand(
-      new AcadeDrive(m_xbox::getLeftY, m_xbox::getRightX, m_drivetrain)
+      new DefaultDriveCommand(m_xbox::getLeftY, m_xbox::getRightX, m_drivetrain)
     );
 
 
@@ -78,6 +82,8 @@ xboxButton1.whenPressed(new ShooterMotorOnCommand( m_shooter ) ,true);
      new JoystickButton(m_xbox, XboxController.Button.kA.value)
      .whenPressed(new InstantCommand(m_drivetrain::motorOn, m_drivetrain));
      SmartDashboard.putData("motor on", new InstantCommand(m_drivetrain::motorOn, m_drivetrain));
+
+    
    
   }
 
