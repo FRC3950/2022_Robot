@@ -12,11 +12,15 @@ import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import javax.management.MXBean;
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
@@ -50,7 +54,6 @@ public class RobotContainer {
     //Smartdashboard Subsystems:
     SmartDashboard.putData(m_drivetrain);
     
-    
 
     //Smartdashboard Buttons:
 
@@ -82,6 +85,10 @@ xboxButton1.whenPressed(new ShooterMotorOnCommand( m_shooter ) ,true);
      new JoystickButton(m_xbox, XboxController.Button.kA.value)
      .whenPressed(new InstantCommand(m_drivetrain::motorOn, m_drivetrain));
      SmartDashboard.putData("motor on", new InstantCommand(m_drivetrain::motorOn, m_drivetrain));
+
+     new JoystickButton(m_xbox, XboxController.Button.kB.value).whenPressed(
+       new InstantCommand(()->m_xbox.setRumble(RumbleType.kLeftRumble, 0.9)));
+     
 
     
    
