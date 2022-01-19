@@ -21,6 +21,7 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.TalonFXInvertType;
@@ -44,6 +45,8 @@ public class DrivetrainSubsytem extends SubsystemBase {
   private final WPI_TalonFX test = new WPI_TalonFX(7);
   private final AnalogGyro m_gyro = new AnalogGyro(1);
 
+  TalonFXSimCollection testSim;
+
   
   private Timer driveTimer = new Timer();
 
@@ -63,7 +66,7 @@ public class DrivetrainSubsytem extends SubsystemBase {
 
   public DrivetrainSubsytem() {
     super();
-
+    testSim = test.getSimCollection();
     m_gyro.reset();
 
      m_frontRight.configFactoryDefault();
@@ -78,6 +81,7 @@ public class DrivetrainSubsytem extends SubsystemBase {
     m_backRight.follow(m_frontRight);
     m_backLeft.follow(m_frontLeft);
 
+// m_frontLeft.set(ControlMode.Position, value);
 
 
 
@@ -131,9 +135,9 @@ m_odometry = new DifferentialDriveOdometry(m_gyro.getRotation2d());
 
     m_drive.arcadeDrive(x, y);
      
-    d += x;
+    // d += x;
     
-    m_odometry.update(m_gyro.getRotation2d(), 0.1*d, 0.1*d);
+    // m_odometry.update(m_gyro.getRotation2d(), 0.1*d, 0.1*d);
 
   }
 
