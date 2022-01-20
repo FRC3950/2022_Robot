@@ -21,6 +21,7 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.InvertType;
@@ -42,8 +43,9 @@ public class DrivetrainSubsytem extends SubsystemBase {
   private final WPI_TalonFX m_backLeft = new WPI_TalonFX(Constants.k_backLeft);
   private final WPI_TalonFX m_backRight = new WPI_TalonFX(Constants.k_backRight);
 
-  private final WPI_TalonFX test = new WPI_TalonFX(7);
-  private final AnalogGyro m_gyro = new AnalogGyro(1);
+  // private final WPI_TalonSRX leftMotor = new WPI_TalonSRX(0);
+  // private final WPI_TalonSRX rightMotor = new WPI_TalonSRX(15);
+
 
   TalonFXSimCollection testSim;
 
@@ -52,13 +54,9 @@ public class DrivetrainSubsytem extends SubsystemBase {
 
   DifferentialDrive m_drive = new DifferentialDrive(m_frontLeft, m_frontRight);
 
-
-  private final DifferentialDriveKinematics m_kinematics = new DifferentialDriveKinematics(0.8);
-  private final DifferentialDriveOdometry m_odometry;
   
   private final Field2d m_field = new Field2d();
 
-  private final TalonFXSimCollection leftSimEncoder;
 
 
   double d;
@@ -66,8 +64,7 @@ public class DrivetrainSubsytem extends SubsystemBase {
 
   public DrivetrainSubsytem() {
     super();
-    testSim = test.getSimCollection();
-    m_gyro.reset();
+  
 
      m_frontRight.configFactoryDefault();
      m_backLeft.configFactoryDefault();
@@ -102,22 +99,21 @@ public class DrivetrainSubsytem extends SubsystemBase {
 m_frontLeft.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
 
 //Simulated Encoder
-leftSimEncoder = m_frontLeft.getSimCollection();
-leftSimEncoder.setIntegratedSensorRawPosition(1);
+// leftSimEncoder = m_frontLeft.getSimCollection();
+// leftSimEncoder.setIntegratedSensorRawPosition(1);
 
  
 
 
 //Gyro
-m_odometry = new DifferentialDriveOdometry(m_gyro.getRotation2d());
 
 
     //LiveWindow
     addChild("a diff drive", m_drive);
-    addChild("b right motor controller", m_backRight);
-    addChild("Motor TEst", test);
-    addChild("gyro", m_gyro);
-    addChild("Motor on Drive -front right", m_frontRight);
+    // addChild("b right motor controller", m_backRight);
+    // addChild("Motor TEst", test);
+    // addChild("gyro", m_gyro);
+    // addChild("Motor on Drive -front right", m_frontRight);
     
     
     SmartDashboard.putData("Field", m_field);
@@ -128,7 +124,7 @@ m_odometry = new DifferentialDriveOdometry(m_gyro.getRotation2d());
   public void periodic() {
     // This method will be called once per scheduler run
     log();
-    m_field.setRobotPose(m_odometry.getPoseMeters());
+   
   }
 
   public void drive(double x, double y){
@@ -143,13 +139,12 @@ m_odometry = new DifferentialDriveOdometry(m_gyro.getRotation2d());
 
   public void motorOn(){
 
-    test.set(0.77);
+    
   }
 
   public void log(){
     SmartDashboard.putNumber("Motor Output Front-Left: ", m_frontLeft.get());    
     SmartDashboard.putNumber("Velocity Front-Left: ", m_frontLeft.getSelectedSensorVelocity());   
-    SmartDashboard.putNumber("Gyro", m_gyro.getAngle());
    
   }
 
@@ -168,14 +163,14 @@ public double getTimeDrive(){
 public void encoderInfo(){
 
 		/* get the selected sensor for PID0 */
-		double appliedMotorOutput = m_frontLeft.getMotorOutputPercent();
-		double selSenPos = m_frontLeft.getSelectedSensorPosition(0); /* position units */
-		double selSenVel = m_frontLeft.getSelectedSensorVelocity(0); /* position units per 100ms */
+		// double appliedMotorOutput = m_frontLeft.getMotorOutputPercent();
+		// double selSenPos = m_frontLeft.getSelectedSensorPosition(0); /* position units */
+		// double selSenVel = m_frontLeft.getSelectedSensorVelocity(0); /* position units per 100ms */
 
-		/* scaling depending on what user wants */
-		double pos_Rotations = (double) selSenPos / kUnitsPerRevolution;
-		double vel_RotPerSec = (double) selSenVel / kUnitsPerRevolution * 10; /* scale per100ms to perSecond */
-		double vel_RotPerMin = vel_RotPerSec * 60.0;
+		// /* scaling depending on what user wants */
+		// double pos_Rotations = (double) selSenPos / kUnitsPerRevolution;
+		// double vel_RotPerSec = (double) selSenVel / kUnitsPerRevolution * 10; /* scale per100ms to perSecond */
+		// double vel_RotPerMin = vel_RotPerSec * 60.0;
 
 }
 
