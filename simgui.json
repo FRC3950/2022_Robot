@@ -16,6 +16,21 @@
           "open": true
         }
       },
+      "Talon FX[12]": {
+        "header": {
+          "open": true
+        }
+      },
+      "Talon FX[12]/Fwd Limit": {
+        "header": {
+          "open": true
+        }
+      },
+      "Talon FX[12]/Integrated Sensor": {
+        "header": {
+          "open": true
+        }
+      },
       "Talon FX[14]/Integrated Sensor": {
         "header": {
           "open": true
@@ -70,9 +85,11 @@
       "/LiveWindow/DrivetrainSubsytem/Drive": "DifferentialDrive",
       "/LiveWindow/DrivetrainSubsytem/a diff drive": "DifferentialDrive",
       "/LiveWindow/DrivetrainSubsytem/gyro": "Gyro",
+      "/LiveWindow/OneOfTheShootFalcons": "Subsystem",
       "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
       "/SmartDashboard/DrivetrainSubsytem": "Subsystem",
       "/SmartDashboard/Field": "Field2d",
+      "/SmartDashboard/OneOfTheShootFalcons": "Subsystem",
       "/SmartDashboard/motor on": "Command"
     },
     "windows": {

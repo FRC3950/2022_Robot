@@ -54,6 +54,7 @@ public class RobotContainer {
 
     //Smartdashboard Subsystems:
     SmartDashboard.putData(m_drivetrain);
+    SmartDashboard.putData(m_musicBox);
     
 
     //Smartdashboard Buttons:
