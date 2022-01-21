@@ -35,7 +35,8 @@ Orchestra orchestra = new Orchestra();
 
 
     orchestra.addInstrument(musicMotor);
-    orchestra.loadMusic("mermaid.chrp");
+    orchestra.addInstrument(otherMotor);
+    orchestra.loadMusic("butterfly.chrp");
 
     
   }
@@ -49,5 +50,6 @@ Orchestra orchestra = new Orchestra();
 
   public void playSong(){
    orchestra.play();
+   
   }
 }
