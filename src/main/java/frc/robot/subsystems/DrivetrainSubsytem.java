@@ -38,13 +38,15 @@ public class DrivetrainSubsytem extends SubsystemBase {
   // Conversion -> 1 rotation/ 2048 * gear ration * 6pi inchies / 1 rotation * 1feet/12 icnes -> feet
   // private final double kDriveTick2Feet = above
 
-  private final WPI_TalonFX m_frontLeft = new WPI_TalonFX(Constants.k_frontLeft);
-  private final WPI_TalonFX m_frontRight = new WPI_TalonFX(Constants.k_frontRight);
-  private final WPI_TalonFX m_backLeft = new WPI_TalonFX(Constants.k_backLeft);
-  private final WPI_TalonFX m_backRight = new WPI_TalonFX(Constants.k_backRight);
+  // 1.
 
-  // private final WPI_TalonSRX leftMotor = new WPI_TalonSRX(0);
-  // private final WPI_TalonSRX rightMotor = new WPI_TalonSRX(15);
+  // private final WPI_TalonFX m_frontLeft = new WPI_TalonFX(Constants.k_frontLeft);
+  // private final WPI_TalonFX m_frontRight = new WPI_TalonFX(Constants.k_frontRight);
+  // private final WPI_TalonFX m_backLeft = new WPI_TalonFX(Constants.k_backLeft);
+  // private final WPI_TalonFX m_backRight = new WPI_TalonFX(Constants.k_backRight);
+
+  private final WPI_TalonSRX leftMotor = new WPI_TalonSRX(15);
+  private final WPI_TalonSRX rightMotor = new WPI_TalonSRX(0);
 
 
   TalonFXSimCollection testSim;
@@ -52,7 +54,10 @@ public class DrivetrainSubsytem extends SubsystemBase {
   
   private Timer driveTimer = new Timer();
 
-  DifferentialDrive m_drive = new DifferentialDrive(m_frontLeft, m_frontRight);
+  // 2.
+  // DifferentialDrive m_drive = new DifferentialDrive(m_frontLeft, m_frontRight);
+
+  DifferentialDrive m_drive = new DifferentialDrive(leftMotor,rightMotor);
 
   
   private final Field2d m_field = new Field2d();
@@ -65,19 +70,21 @@ public class DrivetrainSubsytem extends SubsystemBase {
   public DrivetrainSubsytem() {
     super();
   
-
-     m_frontRight.configFactoryDefault();
-     m_backLeft.configFactoryDefault();
-     m_frontLeft.configFactoryDefault(); 
-     m_backRight.configFactoryDefault(); 
+// 3.
+//      m_frontRight.configFactoryDefault();
+//      m_backLeft.configFactoryDefault();
+//      m_frontLeft.configFactoryDefault(); 
+//      m_backRight.configFactoryDefault(); 
      
-     m_frontRight.setNeutralMode(NeutralMode.Brake);
-     m_frontLeft.setNeutralMode(NeutralMode.Brake);
+    //  m_frontRight.setNeutralMode(NeutralMode.Brake);
+    //  m_frontLeft.setNeutralMode(NeutralMode.Brake);
 
 
-    m_backRight.follow(m_frontRight);
-    m_backLeft.follow(m_frontLeft);
+    // m_backRight.follow(m_frontRight);
+    // m_backLeft.follow(m_frontLeft);
 
+    leftMotor.configFactoryDefault();
+    rightMotor.configFactoryDefault();
 // m_frontLeft.set(ControlMode.Position, value);
 
 
@@ -96,7 +103,7 @@ public class DrivetrainSubsytem extends SubsystemBase {
 
 
 //Encoders
-m_frontLeft.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
+// m_frontLeft.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
 
 //Simulated Encoder
 // leftSimEncoder = m_frontLeft.getSimCollection();
@@ -143,8 +150,8 @@ m_frontLeft.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
   }
 
   public void log(){
-    SmartDashboard.putNumber("Motor Output Front-Left: ", m_frontLeft.get());    
-    SmartDashboard.putNumber("Velocity Front-Left: ", m_frontLeft.getSelectedSensorVelocity());   
+    // SmartDashboard.putNumber("Motor Output Front-Left: ", m_frontLeft.get());    
+    // SmartDashboard.putNumber("Velocity Front-Left: ", m_frontLeft.getSelectedSensorVelocity());   
    
   }
 

@@ -19,11 +19,11 @@ public class AutoDance extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new AutoDriveCommand(subsystem, 0.8, 2.0),
-      new AutoDriveCommand(subsystem, -0.8, 2.0),
-      new AutoDriveCommand(subsystem, 0.8, 2.0),
-      new AutoDriveCommand(subsystem, -0.8, 2.0),
-      new RunCommand(()->subsystem.drive(0, 0.8), subsystem)
+      new AutoDriveCommand(subsystem, 0.5, 2.0),
+      new AutoDriveCommand(subsystem, -0.5, 2.0),
+      new AutoDriveCommand(subsystem, 0.5, 2.0),
+      new AutoDriveCommand(subsystem, -0.5, 2.0),
+      new RunCommand(()->subsystem.drive(0, 0.5), subsystem)
       
       );
     

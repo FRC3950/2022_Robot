@@ -26,7 +26,7 @@ private double speed, seconds;
   public void initialize() {
 
     subsystem.resetTimer();
-    subsystem.drive(speed, 0);
+    // subsystem.drive(speed, 0);
     
 
 
@@ -35,6 +35,8 @@ private double speed, seconds;
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+
+    subsystem.drive(speed, 0);
 
     // if(subsystem.getTimeDrive()< seconds){
     //   subsystem.drive(speed, 0);

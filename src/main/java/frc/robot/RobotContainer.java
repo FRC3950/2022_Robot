@@ -33,6 +33,7 @@ public class RobotContainer {
 
   // The robot's subsystems are defined here:
   private final DrivetrainSubsytem m_drivetrain = new DrivetrainSubsytem();
+  private final OneOfTheShootFalcons m_musicBox = new OneOfTheShootFalcons();
 
 
   // Robot's Commands defined here if not bound to Joystick:
@@ -88,6 +89,14 @@ xboxButton1.whenPressed(new ShooterMotorOnCommand( m_shooter ) ,true);
 
      new JoystickButton(m_xbox, XboxController.Button.kB.value).whenPressed(
        new InstantCommand(()->m_xbox.setRumble(RumbleType.kLeftRumble, 0.9)));
+
+       new JoystickButton(m_xbox, XboxController.Button.kX.value).whenPressed(
+       new InstantCommand(()->m_xbox.setRumble(RumbleType.kLeftRumble, 0.0)));
+
+       new JoystickButton(m_xbox, XboxController.Button.kY.value).whenPressed(
+         new InstantCommand(m_musicBox::playSong,m_musicBox));
+       
+     
      
 
     
