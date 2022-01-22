@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.music.Orchestra;
@@ -31,7 +32,13 @@ Orchestra orchestra = new Orchestra();
     otherMotor.configFactoryDefault();
 
     musicMotor.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
+
+    //We need to set the internal sensor the be the one active
     otherMotor.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
+    //Set Velocity and what we set and feed in a value. This is every 100Ms. Pretty sure
+    //Falcon's have 2048 per revolution. So 2048/10 will give one rotation per second with the below
+    //... which is slow
+    otherMotor.set(ControlMode.Velocity, 2048/10);
 
 
     orchestra.addInstrument(musicMotor);
