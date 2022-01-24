@@ -3,8 +3,6 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot;
-//test
-
 
 import frc.robot.commands.*;
 import frc.robot.commands.commandGroups.AutoDance;
@@ -34,7 +32,7 @@ public class RobotContainer {
 
   // The robot's subsystems are defined here:
   private final DrivetrainSubsytem m_drivetrain = new DrivetrainSubsytem();
-  private final OneOfTheShootFalcons m_musicBox = new OneOfTheShootFalcons();
+  private final ShooterSubsystem m_musicBox = new ShooterSubsystem();
 
 
   // Robot's Commands defined here if not bound to Joystick:
