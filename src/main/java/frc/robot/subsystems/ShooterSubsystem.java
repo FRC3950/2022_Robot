@@ -20,8 +20,9 @@ private final WPI_TalonFX m_bottom;
 private final WPI_TalonFX m_Slave;
 private final WPI_TalonSRX m_conveyor;
 
-private static final double kP_vel1 = 0, kP_vel2 = 0;
-private static final double kI_vel1 = 0, kI_vel2 = 0;
+private static final double kP_vel1 = 0.01, kP_vel2 = 0.01;
+private static final double kI_vel1 = 0.000001, kI_vel2 = 0.000001;
+private static final double kf= 0.047;
 private static final double kD_vel1 = 0, kD_vel2 = 0;
 private static final double closed_loop_ramp = 0.2;
 public static final int internal_zone = 100; //likely not needed
@@ -51,10 +52,23 @@ Orchestra orchestra = new Orchestra();
     m_bottom.setSensorPhase(false); //need to check that we are getting positive data, switch bool elseul[[]]
    m_Slave.setSensorPhase(false);
 
+   m_bottom.config_kF(0, kf);
+   m_Slave.config_kF(0, kf);
+
+   m_bottom.config_kP(0, kP_vel1);
+   m_Slave.config_kP(0, kP_vel1);
+
+   m_bottom.config_kI(0, kI_vel1);
+   m_Slave.config_kI(0, kI_vel1);
+
+
+    
+
    orchestra.addInstrument(m_bottom);
     orchestra.addInstrument(m_Slave);
     orchestra.loadMusic("butterfly.chrp");
    
+
    
    
     //Set Velocity and what we set and feed in a value. This is every 100Ms. Pretty sure
@@ -77,5 +91,14 @@ Orchestra orchestra = new Orchestra();
     
    orchestra.play();
    
+  }
+
+  public void motorOn(){
+    m_bottom.set(ControlMode.Velocity, 12000);
+    m_Slave.set(ControlMode.Velocity, 12000);
+    m_conveyor.set(.8);
+
+
+
   }
 }
