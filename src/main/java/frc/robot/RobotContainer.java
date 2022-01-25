@@ -93,10 +93,11 @@ xboxButton1.whenPressed(new ShooterMotorOnCommand( m_shooter ) ,true);
        new JoystickButton(m_xbox, XboxController.Button.kX.value).whenPressed(
        new InstantCommand(()->m_xbox.setRumble(RumbleType.kLeftRumble, 0.0)));
 
-       new JoystickButton(m_xbox, XboxController.Button.kY.value).whenPressed(
-         new InstantCommand(m_musicBox::playSong,m_musicBox));
+      //  new JoystickButton(m_xbox, XboxController.Button.kY.value).whenPressed(
+      //    new InstantCommand(m_musicBox::playSong,m_musicBox));
        
-     
+      new JoystickButton(m_xbox, XboxController.Button.kY.value).whenPressed(
+         new InstantCommand(m_musicBox::motorOn,m_musicBox));
      
 
     
