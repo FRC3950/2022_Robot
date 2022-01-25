@@ -6,7 +6,9 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.music.Orchestra;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -14,50 +16,65 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ShooterSubsystem extends SubsystemBase {
 
-private final WPI_TalonFX musicMotor;
-private final WPI_TalonFX otherMotor;
+private final WPI_TalonFX m_bottom;
+private final WPI_TalonFX m_Slave;
+private final WPI_TalonSRX m_conveyor;
 
-private int counter = 0;
+private static final double kP_vel1 = 0, kP_vel2 = 0;
+private static final double kI_vel1 = 0, kI_vel2 = 0;
+private static final double kD_vel1 = 0, kD_vel2 = 0;
+private static final double closed_loop_ramp = 0.2;
+public static final int internal_zone = 100; //likely not needed
 
 Orchestra orchestra = new Orchestra();
 
   /** Creates a new OneOfTheShootFalcons. */
   public ShooterSubsystem() {
 
+    m_conveyor = new WPI_TalonSRX(8);
+
+    m_bottom = new WPI_TalonFX(13); //bottom
+    m_Slave= new WPI_TalonFX(12);
+
+    m_bottom.configFactoryDefault();
+    m_Slave.configFactoryDefault();
+
+    m_bottom.setNeutralMode(NeutralMode.Coast);
+    m_Slave.setNeutralMode(NeutralMode.Coast);
+
+
+    m_bottom.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor,0, 10); //Read more into timeout Param
+    m_Slave.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor, 0, 10);
     
 
-    musicMotor = new WPI_TalonFX(13);
-    otherMotor= new WPI_TalonFX(12);
-    addChild("Test", otherMotor);
+    m_bottom.setInverted(true);
+    m_bottom.setSensorPhase(false); //need to check that we are getting positive data, switch bool elseul[[]]
+   m_Slave.setSensorPhase(false);
 
-    musicMotor.configFactoryDefault();
-    otherMotor.configFactoryDefault();
-
-    musicMotor.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
-
-    //We need to set the internal sensor the be the one active
-    otherMotor.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
+   orchestra.addInstrument(m_bottom);
+    orchestra.addInstrument(m_Slave);
+    orchestra.loadMusic("butterfly.chrp");
+   
+   
+   
     //Set Velocity and what we set and feed in a value. This is every 100Ms. Pretty sure
     //Falcon's have 2048 per revolution. So 2048/10 will give one rotation per second with the below
     //... which is slow
-    otherMotor.set(ControlMode.Velocity, 2048/10);
+    //m_Slave.set(ControlMode.Velocity, 2048/10);
 
 
-    orchestra.addInstrument(musicMotor);
-    orchestra.addInstrument(otherMotor);
-    orchestra.loadMusic("butterfly.chrp");
 
-    
+  
   }
 
   @Override
   public void periodic() {
 
-    SmartDashboard.putNumber("Counter", counter++);
     // This method will be called once per scheduler run
   }
 
   public void playSong(){
+    
    orchestra.play();
    
   }
