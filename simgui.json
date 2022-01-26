@@ -85,6 +85,11 @@
         "header": {
           "open": true
         }
+      },
+      "Talon SRX[8]": {
+        "header": {
+          "open": true
+        }
       }
     }
   },
@@ -96,11 +101,14 @@
       "/LiveWindow/DrivetrainSubsytem/a diff drive": "DifferentialDrive",
       "/LiveWindow/DrivetrainSubsytem/gyro": "Gyro",
       "/LiveWindow/OneOfTheShootFalcons": "Subsystem",
+      "/LiveWindow/ShooterSubsystem": "Subsystem",
       "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
       "/SmartDashboard/DrivetrainSubsytem": "Subsystem",
       "/SmartDashboard/Field": "Field2d",
       "/SmartDashboard/OneOfTheShootFalcons": "Subsystem",
-      "/SmartDashboard/motor on": "Command"
+      "/SmartDashboard/ShooterSubsystem": "Subsystem",
+      "/SmartDashboard/motor on": "Command",
+      "/SmartDashboard/test": "Command"
     },
     "windows": {
       "/LiveWindow/DrivetrainSubsytem/Drive": {

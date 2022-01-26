@@ -32,13 +32,14 @@ public class RobotContainer {
 
   // The robot's subsystems are defined here:
   private final DrivetrainSubsytem m_drivetrain = new DrivetrainSubsytem();
-  private final ShooterSubsystem m_musicBox = new ShooterSubsystem();
+  private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
 
 
   // Robot's Commands defined here if not bound to Joystick:
   // private final ExampleCommand m_autoCommand = new ExampleCommand(m_drivetrain);
   // private final AutoDriveCommand m_autoCommand = new AutoDriveCommand(m_drivetrain, 0.7, 5);
   private final AutoDance m_autoCommand = new AutoDance(m_drivetrain);
+  private final shooterMotorsOn m_shooterMotorOn = new shooterMotorsOn(12000, 12000, .8, m_shooterSubsystem);
 
 
   //Robot's Controllers & Joysticks:
@@ -47,17 +48,19 @@ public class RobotContainer {
   //Sendable Chooser - For selected automous commands
  // SendableChooser<Command> m_chooser = new SendableChooser<>();
 
+ 
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
 
     //Smartdashboard Subsystems:
     SmartDashboard.putData(m_drivetrain);
-    SmartDashboard.putData(m_musicBox);
+    SmartDashboard.putData(m_shooterSubsystem);
     
 
     //Smartdashboard Buttons:
-
+    SmartDashboard.putData("test", m_shooterMotorOn);
  
     //Default Commands:
     m_drivetrain.setDefaultCommand(
@@ -94,10 +97,10 @@ xboxButton1.whenPressed(new ShooterMotorOnCommand( m_shooter ) ,true);
        new InstantCommand(()->m_xbox.setRumble(RumbleType.kLeftRumble, 0.0)));
 
       //  new JoystickButton(m_xbox, XboxController.Button.kY.value).whenPressed(
-      //    new InstantCommand(m_musicBox::playSong,m_musicBox));
+      //    new InstantCommand(m_shooterSubsystem::playSong,m_shooterSubsystem));
        
       new JoystickButton(m_xbox, XboxController.Button.kY.value).whenPressed(
-         new InstantCommand(m_musicBox::motorOn,m_musicBox));
+         new InstantCommand(m_shooterSubsystem::motorOn,m_shooterSubsystem));
      
 
     
