@@ -94,9 +94,9 @@ Orchestra orchestra = new Orchestra();
   }
 
   public void motorOn(){
-    m_bottom.set(ControlMode.Velocity, 12000);
-    m_Slave.set(ControlMode.Velocity, 12000);
-    m_conveyor.set(.8);
+    m_bottom.set(ControlMode.Velocity, 11500);
+    m_Slave.set(ControlMode.Velocity,11000);
+    m_conveyor.set(.9);
 
 
 
