@@ -9,9 +9,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ShooterSubsystem;
 
 
-
-
-
 public class shooterMotorsOn extends CommandBase {
 private  double bottom, top, conveyor;
 ShooterSubsystem shooterSubsystem;
@@ -23,7 +20,6 @@ ShooterSubsystem shooterSubsystem;
     this.conveyor = conveyor;
     this.shooterSubsystem = shooterSubsystem;
     // Use addRequirements() here to declare subsystem dependencies.
-
     addRequirements(shooterSubsystem);
   }
 

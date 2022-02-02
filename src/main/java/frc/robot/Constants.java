@@ -13,6 +13,7 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+    //Drivetrain Subsystem
     public static int k_frontLeft = 0; 
     public static int k_frontRight = 1;
     public static int k_backLeft = 14;
