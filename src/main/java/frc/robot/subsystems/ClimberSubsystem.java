@@ -33,7 +33,8 @@ public class ClimberSubsystem extends SubsystemBase {
   */
 
   public void retractAll(){
-    if(solenoids[0].get() != DoubleSolenoid.Value.kReverse){
+    //If one of the two solenoids used in the "half-extension" is not down, then none of the other solenoids are down
+    if(solenoids[0].get() != DoubleSolenoid.Value.kReverse){ 
       for(final DoubleSolenoid s : solenoids){
         s.set(DoubleSolenoid.Value.kReverse);
       }
@@ -41,10 +42,8 @@ public class ClimberSubsystem extends SubsystemBase {
   }
 
   public void extendAll(){
-    if(solenoids[0].get() != DoubleSolenoid.Value.kForward){
-      for(final DoubleSolenoid s : solenoids){
-        s.set(DoubleSolenoid.Value.kForward);
-      }
+    for(final DoubleSolenoid s : solenoids){
+      s.set(DoubleSolenoid.Value.kForward);
     }
   }
 
@@ -73,7 +72,7 @@ public class ClimberSubsystem extends SubsystemBase {
     solenoids[2].toggle();
   }
 
-  public boolean[] getValues(){
+  public boolean[] getValues(){ // <-- for eventual smart dashboard implementation
     for(int i = 0; i < 4; i++){
       if(solenoids[i].get() == DoubleSolenoid.Value.kForward){
         values[i] = true;
