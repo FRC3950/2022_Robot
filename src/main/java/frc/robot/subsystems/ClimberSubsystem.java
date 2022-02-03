@@ -4,20 +4,11 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-<<<<<<< HEAD
-
-public class ClimberSubsystem extends SubsystemBase {
-  /** Creates a new ClimberSubsystem. */
-  public ClimberSubsystem() {}
-
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-=======
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
-import edu.wpi.first.wpilibj.DoubleSolenoid.*;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+
 
 public class ClimberSubsystem extends SubsystemBase {
   /** Creates a new ClimberSubsystem. */
@@ -92,6 +83,5 @@ public class ClimberSubsystem extends SubsystemBase {
       }
     }
     return values;
->>>>>>> 177e0c1d7a88dcea18be365ce30c4905565530c6
   }
 }
