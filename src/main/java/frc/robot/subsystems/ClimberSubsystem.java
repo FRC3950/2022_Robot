@@ -87,7 +87,7 @@ public class ClimberSubsystem extends SubsystemBase {
       if(solenoids[i].get() == DoubleSolenoid.Value.kForward){
         values[i] = true;
       }
-      else if(solenoids[i].get() == DoubleSolenoid.Value.kForward){
+      else if(solenoids[i].get() == DoubleSolenoid.Value.kReverse){
         values[i] = false;
       }
     }
