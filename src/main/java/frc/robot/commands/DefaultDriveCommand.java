@@ -32,7 +32,6 @@ public class DefaultDriveCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
     m_drivetrain.drive(m_foward.getAsDouble(), m_turn.getAsDouble());
   }
 
