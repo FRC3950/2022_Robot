@@ -22,7 +22,7 @@ public class ClimberSubsystem extends SubsystemBase {
   boolean[] values = new boolean[4];
 
   public ClimberSubsystem() {}
-
+  
   @Override
   public void periodic() {}
   
