@@ -14,8 +14,12 @@ package frc.robot;
  */
 
 public final class Constants {
+<<<<<<< HEAD
 
     //Drivetrain
+=======
+    //Drivetrain Subsystem
+>>>>>>> 177e0c1d7a88dcea18be365ce30c4905565530c6
     public static int k_frontLeft = 0; 
     public static int k_frontRight = 1;
     public static int k_backLeft = 14;
