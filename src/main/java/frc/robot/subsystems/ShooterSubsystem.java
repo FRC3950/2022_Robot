@@ -13,6 +13,7 @@ import com.ctre.phoenix.music.Orchestra;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class ShooterSubsystem extends SubsystemBase {
 
@@ -32,10 +33,10 @@ Orchestra orchestra = new Orchestra();
   /** Creates a new OneOfTheShootFalcons. */
   public ShooterSubsystem() {
 
-    m_conveyor = new WPI_TalonSRX(8);
+    m_conveyor = new WPI_TalonSRX(Constants.k_conveyor);
 
-    m_bottom = new WPI_TalonFX(13); //bottom
-    m_top= new WPI_TalonFX(12);
+    m_bottom = new WPI_TalonFX(Constants.k_bottom); //bottom
+    m_top= new WPI_TalonFX(Constants.k_top);
 
     m_bottom.configFactoryDefault();
     m_top.configFactoryDefault();
@@ -94,12 +95,9 @@ Orchestra orchestra = new Orchestra();
   }
 
   public void motorOn(){
-    m_bottom.set(ControlMode.Velocity, 12000);
-    m_top.set(ControlMode.Velocity, 12000);
-    m_conveyor.set(.8);
-
-
-
+    m_bottom.set(ControlMode.Velocity, 11500);
+    m_top.set(ControlMode.Velocity,11000);
+    m_conveyor.set(1.0);
   }
 
   public void motorOn(double bottom, double top, double conveyor){
@@ -109,3 +107,4 @@ Orchestra orchestra = new Orchestra();
   m_conveyor.set(conveyor);
   }
 }
+

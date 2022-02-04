@@ -21,6 +21,7 @@ ShooterSubsystem shooterSubsystem;
     this.shooterSubsystem = shooterSubsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(shooterSubsystem);
+
   }
 
   // Called when the command is initially scheduled.
@@ -35,19 +36,15 @@ ShooterSubsystem shooterSubsystem;
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
- 
     shooterSubsystem.motorOn(SmartDashboard.getNumber("bottom U/100MS (Default 12,000)", bottom), SmartDashboard.getNumber("bottom U/100MS (Default 12,000)", top), SmartDashboard.getNumber("Conveyor Output", 0.5));
-
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-
     shooterSubsystem.motorOn(0, 0, 0);
   }
   
-
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {

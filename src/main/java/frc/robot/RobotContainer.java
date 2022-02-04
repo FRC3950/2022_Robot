@@ -91,15 +91,15 @@ xboxButton1.whenPressed(new ShooterMotorOnCommand( m_shooter ) ,true);
     SmartDashboard.putData("Xbox Button 1",new ShooterMotorOnCommand( m_shooter ) );
      */
 
-     new JoystickButton(m_xbox, XboxController.Button.kA.value)
+    new JoystickButton(m_xbox, XboxController.Button.kA.value)
      .whenPressed(new InstantCommand(m_drivetrain::motorOn, m_drivetrain));
      SmartDashboard.putData("motor on", new InstantCommand(m_drivetrain::motorOn, m_drivetrain));
 
-     new JoystickButton(m_xbox, XboxController.Button.kB.value).whenPressed(
-       new InstantCommand(()->m_xbox.setRumble(RumbleType.kLeftRumble, 0.9)));
+    new JoystickButton(m_xbox, XboxController.Button.kB.value).whenPressed(
+     new InstantCommand(()->m_xbox.setRumble(RumbleType.kLeftRumble, 0.9)));
 
-       new JoystickButton(m_xbox, XboxController.Button.kX.value).whenPressed(
-       new InstantCommand(()->m_xbox.setRumble(RumbleType.kLeftRumble, 0.0)));
+    new JoystickButton(m_xbox, XboxController.Button.kX.value).whenPressed(
+      new InstantCommand(()->m_xbox.setRumble(RumbleType.kLeftRumble, 0.0)));
 
       //  new JoystickButton(m_xbox, XboxController.Button.kY.value).whenPressed(
       //    new InstantCommand(m_shooterSubsystem::playSong,m_shooterSubsystem));
