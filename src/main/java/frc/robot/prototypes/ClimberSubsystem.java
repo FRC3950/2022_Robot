@@ -5,15 +5,10 @@
 package frc.robot.prototypes;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
-<<<<<<< HEAD:src/main/java/frc/robot/prototypes/ClimberSubsystem.java
 import edu.wpi.first.wpilibj.DoubleSolenoid.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-=======
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
-
->>>>>>> c610ab4dfced9917f0b766541bc93b538144df8b:src/main/java/frc/robot/subsystems/ClimberSubsystem.java
 
 public class ClimberSubsystem extends SubsystemBase {
   /** Creates a new ClimberSubsystem. **/
@@ -80,16 +75,7 @@ public class ClimberSubsystem extends SubsystemBase {
 
   public boolean[] getValues(){
     for(int i = 0; i < 4; i++){
-<<<<<<< HEAD:src/main/java/frc/robot/prototypes/ClimberSubsystem.java
       values[i] = (solenoids[i].get() == Value.kForward) ? true : false;
-=======
-      if(solenoids[i].get() == DoubleSolenoid.Value.kForward){
-        values[i] = true;
-      }
-      else if(solenoids[i].get() == DoubleSolenoid.Value.kReverse){
-        values[i] = false;
-      }
->>>>>>> c610ab4dfced9917f0b766541bc93b538144df8b:src/main/java/frc/robot/subsystems/ClimberSubsystem.java
     }
     return values;
   }
