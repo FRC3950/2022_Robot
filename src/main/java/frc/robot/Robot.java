@@ -18,8 +18,8 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  * project.
  */
 public class Robot extends TimedRobot {
-  private Command m_autonomousCommand;
 
+  private Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
 
   /**
@@ -32,9 +32,6 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
     CameraServer.startAutomaticCapture();
-
-
-    
   }
 
   /**

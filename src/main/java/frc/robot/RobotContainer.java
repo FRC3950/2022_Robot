@@ -5,8 +5,10 @@
 package frc.robot;
 
 import frc.robot.commands.*;
+import frc.robot.commands.autoCommands.*;
 import frc.robot.commands.commandGroups.*;
 import frc.robot.subsystems.*;
+import frc.robot.prototypes.*;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -33,7 +35,10 @@ public class RobotContainer {
   // The robot's subsystems are defined here:
   private final DrivetrainSubsytem m_drivetrain = new DrivetrainSubsytem();
   private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
-  private final ClimberSubsystem m_climberSubsystem = new ClimberSubsystem();
+  
+  //Prototyped subsystems yet to be tested:
+  //private final ClimberSubsystem m_climberSubsystem = new ClimberSubsystem();
+  //private final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
 
   // Robot's Commands defined here if not bound to Joystick:
   // private final ExampleCommand m_autoCommand = new ExampleCommand(m_drivetrain);

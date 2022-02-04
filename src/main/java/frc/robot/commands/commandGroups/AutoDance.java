@@ -7,7 +7,8 @@ package frc.robot.commands.commandGroups;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.commands.AutoDriveCommand;
+import frc.robot.commands.*;
+import frc.robot.commands.autoCommands.*;
 import frc.robot.subsystems.DrivetrainSubsytem;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -24,8 +25,6 @@ public class AutoDance extends SequentialCommandGroup {
       new AutoDriveCommand(subsystem, 0.5, 2.0),
       new AutoDriveCommand(subsystem, -0.5, 2.0),
       new RunCommand(()->subsystem.drive(0, 0.5), subsystem)
-      
-      );
-    
+    );
   }
 }

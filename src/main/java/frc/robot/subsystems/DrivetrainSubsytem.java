@@ -9,6 +9,8 @@ import frc.robot.Constants;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
@@ -44,9 +46,12 @@ public class DrivetrainSubsytem extends SubsystemBase {
   // private final WPI_TalonFX m_frontRight = new WPI_TalonFX(Constants.k_frontRight);
   // private final WPI_TalonFX m_backLeft = new WPI_TalonFX(Constants.k_backLeft);
   // private final WPI_TalonFX m_backRight = new WPI_TalonFX(Constants.k_backRight);
+  //private final DoubleSolenoid shift = new DoubleSolenoid(PneumaticsModuleType.REVPH,5,5); //placeholders
 
   private final WPI_TalonSRX leftMotor = new WPI_TalonSRX(15);
   private final WPI_TalonSRX rightMotor = new WPI_TalonSRX(0);
+  
+  
 
 
   TalonFXSimCollection testSim;
