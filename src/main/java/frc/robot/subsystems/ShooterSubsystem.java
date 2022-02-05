@@ -43,24 +43,25 @@ Orchestra orchestra = new Orchestra();
 
     m_bottom.setNeutralMode(NeutralMode.Coast);
     m_top.setNeutralMode(NeutralMode.Coast);
+    m_conveyor.setNeutralMode(NeutralMode.Coast);
 
 
     m_bottom.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor,0, 10); //Read more into timeout Param
     m_top.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor, 0, 10);
     
-
-    m_bottom.setInverted(true);
+    m_bottom.setInverted(false);
+    m_top.setInverted(true);
     m_bottom.setSensorPhase(false); //need to check that we are getting positive data, switch bool elseul[[]]
-   m_top.setSensorPhase(false);
+    m_top.setSensorPhase(false);
 
-   m_bottom.config_kF(0, kf);
-   m_top.config_kF(0, kf);
+    m_bottom.config_kF(0, kf);
+    m_top.config_kF(0, kf);
 
-   m_bottom.config_kP(0, kP_vel1);
-   m_top.config_kP(0, kP_vel1);
+    m_bottom.config_kP(0, kP_vel1);
+    m_top.config_kP(0, kP_vel1);
 
-   m_bottom.config_kI(0, kI_vel1);
-   m_top.config_kI(0, kI_vel1);
+    m_bottom.config_kI(0, kI_vel1);
+    m_top.config_kI(0, kI_vel1);
 
 
     
@@ -97,7 +98,7 @@ Orchestra orchestra = new Orchestra();
   public void motorOn(){
     m_bottom.set(ControlMode.Velocity, 11500);
     m_top.set(ControlMode.Velocity,11000);
-    m_conveyor.set(1.0);
+    m_conveyor.set(.9);
   }
 
   public void motorOn(double bottom, double top, double conveyor){

@@ -27,9 +27,7 @@ public class ConveyorSubsystem extends SubsystemBase {
   }
 
   public void setMotor(final double speed){
-    if(sensor.get() == false){
       motor.set(speed);
-    }
   }
 
   public void outtake(double speed){
